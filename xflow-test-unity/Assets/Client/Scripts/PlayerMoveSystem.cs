@@ -4,13 +4,11 @@ using UnityEngine;
 
 namespace Xflow {
     sealed class PlayerMoveSystem : IEcsRunSystem {
-        readonly EcsFilterInject<Inc<Player>> _players = default;
         readonly EcsFilterInject<Inc<MoveEvent>> _moveEvents = Idents.Worlds.Events;
+        readonly EcsFilterInject<Inc<Player>> _players = default;
 
         public void Run (EcsSystems systems) {
-            if (_moveEvents.Value.GetEntitiesCount () == 0) {
-                return;
-            }
+            if (_moveEvents.Value.GetEntitiesCount () == 0) return;
 
             Vector3 pos = default;
             foreach (var entity in _moveEvents.Value) {

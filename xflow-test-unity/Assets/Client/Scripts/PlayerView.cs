@@ -4,10 +4,10 @@ using UnityEngine.AI;
 
 namespace Xflow {
     sealed class PlayerView : MonoBehaviour {
-        public EcsPool<DoorOpenEvent> DoorEventPool;
         public Animator Animator;
-        public NavMeshAgent Agent; 
+        public NavMeshAgent Agent;
         public Transform Transform;
+        public EcsPool<DoorOpenEvent> DoorEventPool;
 
         void OnTriggerEnter (Collider other) {
             other.enabled = false;

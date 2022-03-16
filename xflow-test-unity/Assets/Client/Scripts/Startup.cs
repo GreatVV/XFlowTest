@@ -1,9 +1,11 @@
 using DG.Tweening;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Leopotam.EcsLite.UnityEditor;
 using UnityEngine;
 
-namespace Xflow {
+namespace Xflow 
+{
     sealed class Startup : MonoBehaviour {
         [SerializeField] SceneData _sceneData;
         [SerializeField] Configuration _config;
@@ -12,10 +14,9 @@ namespace Xflow {
 
         void Start () {
             _systems = new EcsSystems (new EcsWorld ());
-            var ts = new TimeService ();
+           
 
             _systems
-                .Add (new TimeSystem ())
                 .Add (new PlayerInitSystem ())
                 .Add (new UserInputSystem ())
                 .Add (new PlayerMoveSystem ())
@@ -24,10 +25,10 @@ namespace Xflow {
                 .Add (new DoorOpenSystem ())
                 .AddWorld (new EcsWorld (), Idents.Worlds.Events)
 #if UNITY_EDITOR
-                .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem ())
-                .Add (new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem (Idents.Worlds.Events))
+                .Add (new EcsWorldDebugSystem ())
+                .Add (new EcsWorldDebugSystem (Idents.Worlds.Events))
 #endif
-                .Inject (ts, _sceneData, _config)
+                .Inject (_sceneData, _config)
                 .Init ();
         }
 
