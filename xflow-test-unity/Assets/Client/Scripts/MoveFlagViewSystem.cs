@@ -18,6 +18,9 @@ namespace Xflow {
         public void Run (EcsSystems systems) {
             foreach (var entity in _players.Value) {
                 ref var player = ref _players.Pools.Inc1.Get (entity);
+                if (player.DestinationPos == default) {
+                    return;
+                }
                 _moveFlag.transform.position = player.DestinationPos;
                 var tooClose = (player.Position - _moveFlag.transform.position).sqrMagnitude <= 4f;
                 if (tooClose && _moveFlag.activeSelf) {

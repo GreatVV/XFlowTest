@@ -9,6 +9,10 @@ namespace Xflow {
             foreach (var entity in _players.Value) {
                 ref var player = ref _players.Pools.Inc1.Get (entity);
                 player.Position = player.View.Transform.position;
+
+                if ((player.Position - player.DestinationPos).sqrMagnitude <= 0.5f) {
+                    player.View.SetRunning (false);
+                }
             }
         }
     }

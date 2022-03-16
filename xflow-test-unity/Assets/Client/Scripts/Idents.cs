@@ -7,5 +7,9 @@ namespace Xflow {
         public static class Tags {
             public const string Ground = "Ground";
         }
+
+        public static class AnimatorParams {
+            public const string Moving = "Moving";
+        }
     }
 }

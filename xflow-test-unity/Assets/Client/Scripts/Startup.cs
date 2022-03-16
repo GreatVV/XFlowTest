@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using UnityEngine;
@@ -36,6 +37,7 @@ namespace Xflow {
 
         void OnDestroy () {
             if (_systems != null) {
+                DOTween.KillAll ();
                 _systems.Destroy ();
                 _systems.GetWorld ().Destroy ();
                 _systems = null;
