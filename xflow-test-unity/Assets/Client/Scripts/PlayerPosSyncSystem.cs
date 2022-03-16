@@ -10,7 +10,7 @@ namespace Xflow {
                 ref var player = ref _players.Pools.Inc1.Get (entity);
                 player.Position = player.View.Transform.position;
 
-                if ((player.Position - player.DestinationPos).sqrMagnitude <= 0.5f) {
+                if ((player.Position - player.DestinationPos).sqrMagnitude <= 0.2f) {
                     player.View.SetRunning (false);
                 }
             }
