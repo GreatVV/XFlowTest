@@ -20,9 +20,8 @@ namespace Xflow {
                 ref var player = ref _players.Pools.Inc1.Get (entity);
                 if (player.DestinationPos == default) return;
                 _moveFlag.transform.position = player.DestinationPos;
-
-                //todo move distance detection paramter to config
-                var tooClose = (player.Position - _moveFlag.transform.position).sqrMagnitude <= 4f;
+                
+                var tooClose = (player.Position - _moveFlag.transform.position).sqrMagnitude <= _config.Value.FlagHideSqrDistance;
                 if (tooClose && _moveFlag.activeSelf) {
                     _moveFlag.SetActive (false);
                     continue;

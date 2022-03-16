@@ -3,6 +3,8 @@ using Leopotam.EcsLite.Di;
 
 namespace Xflow {
     sealed class PlayerPosSyncSystem : IEcsRunSystem {
+        private readonly EcsCustomInject<Configuration> _config = default;
+
         readonly EcsFilterInject<Inc<Player>> _players = default;
 
         public void Run (EcsSystems systems) {
@@ -10,8 +12,7 @@ namespace Xflow {
                 ref var player = ref _players.Pools.Inc1.Get (entity);
                 player.Position = player.View.Transform.position;
 
-                //todo move animation threshold to config and move to another system
-                if ((player.Position - player.DestinationPos).sqrMagnitude <= 0.2f) player.View.SetRunning (false);
+                if ((player.Position - player.DestinationPos).sqrMagnitude <= _config.Value.RunAnimationStopSqrDistance) player.View.SetRunning (false);
             }
         }
     }

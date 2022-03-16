@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Xflow {
-    sealed class PlayerView : MonoBehaviour {
+    sealed class PlayerView : MonoBehaviour
+    {
+        public Configuration Config;
         public Animator Animator;
         public NavMeshAgent Agent;
         public Transform Transform;
@@ -14,7 +16,7 @@ namespace Xflow {
 
             if (other.gameObject.TryGetComponent (out DoorButtonView doorButtonView)) {
                 ref var e = ref DoorEventPool.Add (DoorEventPool.GetWorld ().NewEntity ());
-                e.DoorButtonTransform = other.transform;
+                e.DoorButtonView = doorButtonView;
                 e.DoorView = doorButtonView.DoorView;
             }
         }
@@ -25,7 +27,7 @@ namespace Xflow {
         }
 
         public void SetRunning (bool state) {
-            Animator.SetBool (Idents.AnimatorParams.Moving, state);
+            Animator.SetBool (Config.AnimatorMovingParam, state);
         }
     }
 }

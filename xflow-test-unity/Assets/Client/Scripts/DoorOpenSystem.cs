@@ -9,9 +9,8 @@ namespace Xflow {
         public void Run (EcsSystems systems) {
             foreach (var entity in _events.Value) {
                 ref var e = ref _events.Pools.Inc1.Get (entity);
-                //todo move all animation to doorview and dont' hardcode parameters
-                e.DoorView.Transform.DOMoveY (e.DoorView.Transform.position.y + 5f, 2f);
-                e.DoorButtonTransform.DOMoveY (e.DoorButtonTransform.position.y - 0.1f, 2f);
+                e.DoorView.Transform.DOMoveY (e.DoorView.Transform.position.y + e.DoorView.UpOffset, e.DoorView.MoveDuration);
+                e.DoorButtonView.Transform.DOMoveY (e.DoorButtonView.Transform.position.y - e.DoorButtonView.DownOffset, e.DoorButtonView.MoveDuration);
                 e.DoorView.Obstacle.carving = false;
                 _events.Pools.Inc1.Del (entity);
             }

@@ -361,6 +361,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorView: {fileID: 1128838198}
+  Transform: {fileID: 89759125}
+  DownOffset: 0.1
+  MoveDuration: 2
 --- !u!1 &123932311
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +474,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorView: {fileID: 1101724358}
+  Transform: {fileID: 123932315}
+  DownOffset: 0.1
+  MoveDuration: 2
 --- !u!1 &187176899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obstacle: {fileID: 1101724357}
   Transform: {fileID: 1101724353}
+  UpOffset: 5
+  MoveDuration: 2
 --- !u!1 &1128838192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Obstacle: {fileID: 1128838197}
   Transform: {fileID: 1128838193}
+  UpOffset: 5
+  MoveDuration: 2
 --- !u!1 &1398504317
 GameObject:
   m_ObjectHideFlags: 0

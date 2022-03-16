@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPrefab: {fileID: 3035355827839308707, guid: 9945dc48fcc9aa3438c1a74627afa19b, type: 3}
   MoveFlag: {fileID: 942417503705806894, guid: f22b8e1aff56e5e47a8f9643bacae0d9, type: 3}
+  GroundTag: Ground
+  AnimatorMovingParam: Moving
+  FlagHideSqrDistance: 4
+  RunAnimationStopSqrDistance: 0.2
